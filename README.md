@@ -13,17 +13,17 @@ A simple e-book store created using python's Django framework.
 
 ## Screenshots
 ![Home page](/static/images/home.png)
-
+<br>
 ![Genres page](/static/images/genres.png)
-
+<br>
 ![Product details page](/static/images/product_details.png)
-
+<br>
 ![Cart page](/static/images/cart.png)
-
+<br>
 ![SignUp page](/static/images/signup.png)
-
+<br>
 ![SignIn page](/static/images/signin.png)
-
+<br>
 ![Payment page](/static/images/payment.png)
 
 ## Requirements
