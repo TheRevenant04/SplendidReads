@@ -1,0 +1,29 @@
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">SKU</th>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{item.product.SKU}}</td>
+                    <td><a href="{% url 'Products:product_page' pk=item.product.pk %}">{{item.product.Title}}</a></td>
+                    <td>{{item.product.Author}}</td>
+                    <td>₹{{item.product.Price}}</td>
+                    <td><a href="{% url 'Cart:remove_from_cart' pk=item.product.pk %}">remove</a></td>
+                </tr>
+            {% endfor %}
+            <tr>
+                <th colspan="4"scope="row">Total</th>
+                <td><strong>₹{{cart_total_amount}}</strong</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

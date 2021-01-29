@@ -1,0 +1,8 @@
+<p><i class="fas fa-user-circle fa-lg"></i> {{review.customer.get_full_name}}</p>
+<small>published on {{review.published_date}}</small>
+<p>
+    {% for star in five_stars %}
+        <span {% if star <= review.rating %}class="fa fa-star checked"{% else %}class="fa fa-star"{% endif %}></span>
+    {% endfor %}
+</p>
+<p>{{review.comment}}</p>

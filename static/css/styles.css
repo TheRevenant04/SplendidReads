@@ -1,0 +1,169 @@
+a {
+    color : #FB8122;
+}
+a:hover {
+    color : #99CC33;
+    text-decoration : none;
+}
+a:active {
+    color : #99CC33;
+}
+
+body,ol {
+    background-color : #F7F7F7 !important;
+    font-family: 'Roboto', sans-serif;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]:checked ~ label {
+  color: #FB8122;
+}
+
+label:hover,
+label:hover ~ label {
+  color: orange;
+}
+
+small {
+    padding : 0;
+    overflow-wrap : break-word;
+}
+
+#content-wrap {
+  padding-bottom: 15rem;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 3.5rem;
+  background-color : #FB8122;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+a.product-links{
+    color : black !important;
+}
+
+a.product-links:hover {
+    color : #FB8122 !important;
+    text-decoration : none;
+}
+
+.badge-orange, .bg-orange, .btn-orange {
+    background-color : #FB8122 !important;
+}
+
+.card-body-modified {
+    padding : 0;
+    overflow-wrap : word-break;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15vw;
+    object-fit: contain;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+
+@media (max-width : 768px) {
+.card-img-top {
+    width: 100%;
+    height: 45vw;
+    object-fit: contain;
+  }
+}
+
+.checked {
+  color: #FB8122;
+}
+
+.custom-control-input:active ~
+.custom-control-label::before {
+  background-color: #FB8122 !important;
+  border-color: #FB8122 !important;
+}
+
+.custom-control-input:checked ~
+.custom-control-label::before {
+    border-color: #FB8122 !important;
+    background-color: #FB8122 !important;
+}
+
+.custom-control-input:focus ~
+.custom-control-label::before {
+    border-color: #FB8122 !important;
+    box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0) !important;
+}
+
+.custom-control-input:focus:
+not(:checked) ~ .custom-control-label::before {
+  border-color: #FB8122 !important;
+}
+
+.errorlist {
+    list-style : none;
+}
+
+.form-background-color {
+    background-color : #121212;
+}
+
+.form-control:focus {
+    border-color : #FB8122;
+    box-shadow : 0 0 0 0.2rem rgba(251, 129, 34, 1);
+}
+
+.navbar-custom {
+    background-color : #FB8122;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text,
+.navbar-custom .navbar-nav .nav-link {
+    color: #000000;
+}
+
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+    color: #ffffff;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu {
+    position: absolute;
+    left: -17px;
+}
+
+.navbar-nav > li > .dropdown-menu {
+    background-color : #FB8122;
+}
+
+.no-spaces {
+    margin : 0;
+    padding : 0;
+}
+
+.rating_label {
+  color: grey;
+}
+
+.text-center {
+    text-align : center;
+}
+
+.text-purple {
+    color : #BB86FC;
+}

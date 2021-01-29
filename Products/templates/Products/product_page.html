@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <img src="{{product.Image_URL}}" class="img-fluid" alt="{{product.Title}}">
+            </div>
+            <div class="col-md-6">
+                <h3><strong>{{product.Title}}</strong></h3>
+                <p><strong>SKU : </strong> {{product.SKU}}</p>
+                <p><strong>Author : </strong> {{product.Author}}</p>
+                <p><strong>Genre : </strong><a href="{% url 'Products:products' genre=product.Genre %}">{{product.Genre}}</a></p>
+                <p><strong>Price : </strong>&#8377;{{product.Price}}</p>
+                <div class="row mt-2">
+                    {% if user_ebook_exists %}
+                        <div class="col-md-6">
+                            <strong>You have already purchased this ebook!!!</strong>
+                        </div>
+                    {% elif add_to_cart %}
+                        <div class="col-md-6 form-group">
+                            <a href="{% url 'Cart:add_to_cart' pk=product.pk %}" role="button" class="btn btn-orange btn-block">Add to Cart <i class="fas fa-cart-plus fa-lg"></i></a>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <form action="{% url 'Payments:create_quick_order' pk=product.pk %}" method="POST">
+                            {% csrf_token %}
+                              <button class="btn btn-block btn-orange" >Buy Now <i class="fas fa-money-bill-wave fa-lg"></i></button>
+                            </form>
+                        </div>
+                    {% else %}
+                        <div class="col-md-6">
+                            <strong>This product is already in your cart</strong>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm-6">
+                <h2>Ratings</h2>
+                {% if product_reviews %}
+                    {% for review in product_reviews %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                {% include 'Products/product_reviews.html' %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <a href="{% url 'Products:all_product_ratings' pk=product.pk %}">View all</a>
+                {% else %}
+                    <p class="text-secondary"><i>This product has not been reviewed.</i></p>
+                {% endif %}
+                {% if rating_form %}
+                    <form class="rating_form needs-validation" action="{% url 'Products:product_page' pk=product.pk %}" method="post" novalidate>
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <h2 class="clasificacion ">
+                                {% for item in rating_form.rating %}
+                                    {{item.tag}}
+                                    <label for="{{item.id_for_label}}">{{item.choice_label}}</label>
+                                {% endfor %}
+                            </h2>
+                            <div class="invalid-feedback">
+                                This is required.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{rating_form.comment}}
+                            <div class="invalid-feedback">
+                                This field is required.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-orange">Submit</button>
+                        </div>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col">
+                <h2>Similar Products</h2>
+                <div class="row">
+                    {% for product in similar_products %}
+                        {% include 'Products/product_cards.html' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <script>
+        // JavaScript for disabling form submissions if there are invalid fields.
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+        </script>
+
+{% endblock %}

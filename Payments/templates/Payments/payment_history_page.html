@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row justify-content-center mt-3">
+            <h2>My Payments</h2>
+        </div>
+        <div class="row justify-content-center mt-2">
+            <div class="accordion" id="accordionExample">
+                {% for payment in payments %}
+                    <div class="card">
+                        <div class="card-header" id="heading{{forloop.counter}}">
+                            <h2 class="mb-0">
+                                <button class="btn btn-orange btn-block " type="button" data-toggle="collapse" data-target="#collapse{{forloop.counter}}" aria-expanded="false" aria-controls="collapse{{forloop.counter}}">
+                                    {{payment.payment_id}}
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapse{{forloop.counter}}" class="collapse" aria-labelledby="heading{{forloop.counter}}" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <p><strong>Customer Name : </strong>{{ payment.customer.get_full_name }}</p>
+                                <p><strong>Customer ID : </strong>{{payment.customer.get_username}}</p>
+                                <p><strong>Payment Status : </strong>{{payment.status}}</p>
+                                <p><strong>Order ID : </strong>{{payment.order_id}}</p>
+                                <p><strong>Payment ID : </strong>{{payment.payment_id}}</p>
+                                <p><strong>Payment Time : </strong>{{payment.payment_time}}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

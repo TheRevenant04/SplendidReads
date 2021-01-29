@@ -1,0 +1,17 @@
+<div class="col-sm-4 col-lg-2 col-6 mt-2">
+    <div class="card border-0 h-100">
+        <a class="product-links" href="{% url 'Products:product_page' pk=product.pk %}">
+            <img src="{{product.Image_URL}}" class="card-img-top img-fluid" alt="{{product.Title}}">
+        </a>
+        <div class="card-body card-body-modified .no-spaces">
+            <a class="product-links" href="{% url 'Products:product_page' pk=product.pk %}">
+                <small class="card-title"><b>{{product.Title|truncatechars:51}}</b></small><br>
+            </a>
+            <small class="card-text">{{product.Author}}</small><br>
+            <h5 class="card-text"><strong>₹{{product.Price}}</strong></h5>
+            {% if product.avgproductratings.avg_rating %}
+                <h5><span class="badge badge-orange text-white">{{product.avgproductratings.avg_rating}}/5 <span class="fa fa-star"></span></span></h5>
+            {% endif %}
+        </div>
+    </div>
+</div>

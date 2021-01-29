@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container-fluid">
+        {% include 'Products/product_search.html' %}
+        {% if filter %}
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-6 text-center">
+                    <button class="btn btn-orange" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        Filter
+                    </button>
+                    <div class="collapse" id="collapseExample">
+                        <div class="card card-body">
+                            <form class="needs-validation" method="GET" novalidate>
+                                <div class="form-group">
+                                    {{filter.product_filter}}
+                                    <div class="invalid-feedback">
+                                        Please choose a filter.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-orange btn-block">Apply Filter</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {% if products %}
+            <div class="row mt-3">
+                {% for product in products %}
+                    {% include 'Products/product_cards.html' %}
+                {% endfor %}
+            </div>
+            <div class="row mt-5">
+                <div class="col">
+                    <div class="pagination justify-content-center">
+                        <span class="step-links">
+                            {% if products.has_previous %}
+                                <a href="?page=1{% if filter_string %}&product_filter={{filter_string}}{% endif %}{% if search_keyword %}&search_keyword={{search_keyword}}{% endif %}">&laquo; first</a>
+                                <a href="?page={{ products.previous_page_number }}{% if filter_string %}&product_filter={{filter_string}}{% endif %}{% if search_keyword %}&search_keyword={{search_keyword}}{% endif %}">previous</a>
+                            {% endif %}
+                            <span class="current">
+                                Page {{ products.number }} of {{ products.paginator.num_pages }}.
+                            </span>
+                            {% if products.has_next %}
+                                <a href="?page={{ products.next_page_number }}{% if filter_string %}&product_filter={{filter_string}}{% endif %}{% if search_keyword %}&search_keyword={{search_keyword}}{% endif %}">next</a>
+                                <a href="?page={{ products.paginator.num_pages }}{% if filter_string %}&product_filter={{filter_string}}{% endif %}{% if search_keyword %}&search_keyword={{search_keyword}}{% endif %}">last &raquo;</a>
+                            {% endif %}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="row justify-content-center mt-3">
+                <div class="col-md-6">
+                    <p>{{message}}</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

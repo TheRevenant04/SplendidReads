@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="row mt-3">
+            {% if user_ebooks %}
+                <div class="row">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">SKU</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Author</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in user_ebooks %}
+                                    <tr>
+                                        <th scope="row">{{forloop.counter}}</th>
+                                        <td>{{item.ebook.product.SKU}}</td>
+                                        <td><a href="{% url 'Products:product_page' pk=item.ebook.product.pk %}">{{item.ebook.product.Title}}</a></td>
+                                        <td>{{item.ebook.product.Author}}</td>
+                                        <td><a href="">Read</a></td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col text-center align-items-center bg-danger">
+                    <p>{{message}} <a href="{% url 'Products:home_page' %}" class="btn btn-orange" role="button">Shop Ebooks</a></p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

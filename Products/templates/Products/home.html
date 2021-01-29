@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% include 'Products/product_search.html' %}
+    <div class="container-fluid mt-3">
+        <div class="row justify-content-center">
+            <h3>Featured</h3>
+        </div>
+        <div class="row">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <div class="row">
+                        {%for product in featured|slice:"0:6" %}
+                          {% include 'Products/product_cards.html' %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                      <div class="carousel-item">
+                        <div class="row">
+                          {%for product in featured|slice:"6:12" %}
+                          {% include 'Products/product_cards.html' %}
+                          {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5">
+              <h3>Latest</h3>
+        </div>
+        <div class="row">
+            {%for product in latest %}
+            {% include 'Products/product_cards.html' %}
+            {% endfor %}
+        </div>
+        <div class="row justify-content-end">
+            <p><a href="{% url 'Products:product_filter' product_filter=filter_tags.latest %}">View All <i class="fas fa-arrow-circle-right fa-lg"></i></a></p>
+        </div>
+        <div class="row justify-content-center mt-5">
+              <h3>Top Rated</h3>
+        </div>
+        <div class="row">
+            {%for product in top_rated %}
+            {% include 'Products/product_cards.html' %}
+            {% endfor %}
+        </div>
+        <div class="row justify-content-end">
+            <p><a href="{% url 'Products:product_filter' product_filter=filter_tags.top_rated %}">View All <i class="fas fa-arrow-circle-right fa-lg"></i></a></p>
+        </div>
+        <div class="row justify-content-center mt-5">
+              <h3>Best Sellers</h3>
+        </div>
+        <div class="row">
+            {%for product in bestsellers %}
+            {% include 'Products/product_cards.html' %}
+            {% endfor %}
+        </div>
+        <div class="row justify-content-end">
+            <p><a href="{% url 'Products:product_filter' product_filter=filter_tags.bestsellers %}">View All <i class="fas fa-arrow-circle-right fa-lg"></i></a></p>
+        </div>
+    </div>
+{% endblock %}
