@@ -53,7 +53,7 @@ A simple e-book store created using python's Django framework.
 1. Load product details in the database.
    >(path to your project)$python manage.py Shell
 
-   >>>>exec(open("./load_product_data.py").read())
+   >$exec(open("./load_product_data.py").read())
 
    This will take a while to execute.
 
