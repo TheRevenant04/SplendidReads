@@ -51,7 +51,7 @@ A simple e-book store created using python's Django framework.
    >(path to your project)$python manage.py migrate
 
 1. Load product details in the database.
-   >(path to your project)$python manage.py Shell
+   >(path to your project)$python manage.py shell
 
    >$exec(open("./load_product_data.py").read())
 
