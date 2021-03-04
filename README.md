@@ -2,7 +2,7 @@
 A simple e-book store created using python's Django framework.
 
 ## Description
-* **SplendidReads** is a simple e-book store can be used by anyone.
+* **SplendidReads** is a simple e-book store that can be used by anyone.
 * The website provides user authentication and authorization features which ensures that legitimate users access the website services.
 * Currently, the only payment currency accepted is '**Indian Rupee**' (INR).
 * The website uses '**Razorpay**' as the payment gateway. For more details visit https://razorpay.com/.<br> **Note:** This is a demo website, hence, the payment portal runs in **test mode**.
